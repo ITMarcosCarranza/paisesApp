@@ -1,0 +1,27 @@
+<h2>Por Pais</h2>
+<hr/>
+
+<div class="row">
+    <div class="col">
+        <app-busqueda (onBuscar)="buscar($event)"
+        (onDebounce)="sugerencias($event)"
+        Comodin="Por Pais"></app-busqueda>
+    </div>
+    <ul class="list-group">
+      <li *ngFor="let pais of paisesSugeridos"  class="list-group-item list-group-item-action" >
+        {{pais.name.common}}
+      </li>
+    </ul>
+</div>
+    <div *ngIf="hayError;else tablaPaises" class="alert alert-danger mt-1">
+        No se encontro nada con el termino {{termino}}
+    </div>
+
+    <ng-template #tablaPaises>
+        <div  class="row">
+          <div class="col">
+            <app-tabla [paises]="paises"></app-tabla>
+          </div>
+        </div>
+
+    </ng-template>

@@ -1,0 +1,22 @@
+<h2 > Por Capital</h2>
+
+<div class="row">
+    <div class="col">
+        <app-busqueda (onBuscar)="buscar($event)"
+        (onDebounce)="sugerencias($event)"
+        Comodin="Buscar Capital..."></app-busqueda>
+    </div>
+
+    <div *ngIf="hayError;else tablaPaises" class="alert alert-danger mt-1">
+        No se encontro nada con el termino {{termino}}
+    </div>
+
+    <ng-template #tablaPaises>
+        <div  class="row">
+          <div class="col">
+            <app-tabla [paises]="capitales"></app-tabla>
+          </div>
+        </div>
+
+    </ng-template>
+</div>
